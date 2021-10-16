@@ -1,0 +1,29 @@
+body{
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image: url(img/back.jpg);
+    background-size: cover;
+}
+
+.container .card{
+    height: 15rem;
+    background-color: #ffffff;
+    opacity: 0.9;
+    border-radius: 5px;
+       
+}
+#boutton{
+    width: 16rem;
+    border-radius: 8px;
+}
+#inp{
+    width: 18rem;
+    border-radius: 9px;
+}
+#sel{
+    width: 6rem;
+    border-radius: 5px;
+}

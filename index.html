@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <div class="card" style="width: 80rem;">
+            <h1><center>Convertisseur De Devise</center> </h1>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        
+                            <div class="col">
+                                <input type="text" id="inp" placeholder="Montant">
+                            </div>
+                            <div class="col">
+                                <select name="" id="sel">
+                                    <option value="TND">TND</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EGP">EGP</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary" id="boutton">Convertir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="result">
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+<script type="module">
+    let date = "2019-05-05"
+    let url = `http://api.exchangeratesapi.io/v1/${(date) ? date : "latest"}?access_key=01516af766696ad129b060a627689d8e`
+    let rates
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            rates = data.rates
+        })
+        .catch(error => {
+            console.log("error :", error)
+        })
+
+    document.querySelector("button").onclick = () => {
+        let value = document.querySelector("input").value
+        let exchangeRate = document.querySelector("select").value
+        document.querySelector(".result").innerText = `${value} en EUR is ${value * rates[exchangeRate]} en ${exchangeRate}`
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+
+</html>
